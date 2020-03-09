@@ -33,49 +33,10 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
 
 message Item {
     string id = 1;
-    int64 shopifyId = 2;
+    string url = 2;
     string title = 3;
-    string description = 4;
-    message Image {
-        string id = 1;
-        int64 shopifyId = 2;
-        string src = 3;
-        string alt = 4;
-        string position = 5;
-        google.protobuf.Timestamp created = 6;
-        google.protobuf.Timestamp updated = 7;
-    }
-    repeated Image images = 5;
-    string vendor = 6;
-    string itemType = 7;
-    repeated Collection collections = 8;
-    string tags = 9;
-    message Variant {
-        string id = 1;
-        int64 shopifyId = 2;
-        string title = 3;
-        string sku = 4;
-        string position = 5;
-        string regularPrice = 6;
-        string salesPrice = 7;
-        string inventoryQuantity = 8;
-        string weight = 9;
-        google.protobuf.Timestamp created = 10;
-        google.protobuf.Timestamp updated = 11;
-    }
-    repeated Variant variants = 10;
-    google.protobuf.Timestamp created = 11;
-    google.protobuf.Timestamp updated = 12;
-}
-
-message Collection {
-    string id = 1;
-    string shopifyId = 2;
-    string title = 3;
-    string description = 4;
-    string image = 5;
-    google.protobuf.Timestamp created = 6;
-    google.protobuf.Timestamp updated = 7;
+    google.protobuf.Timestamp created = 4;
+    google.protobuf.Timestamp updated = 5;
 }
 
 message CreateRequest{

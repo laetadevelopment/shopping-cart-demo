@@ -5,11 +5,11 @@ import (
 	"flag"
 	"fmt"
 
-	"source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/datastore"
-	"source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/logger"
-	"source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/protocol/grpc"
-	"source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/protocol/rest"
-	"source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/service/v1"
+	"github.com/laetadevelopment/shopping-cart-demo/microservices/items/pkg/datastore"
+	"github.com/laetadevelopment/shopping-cart-demo/microservices/items/pkg/logger"
+	"github.com/laetadevelopment/shopping-cart-demo/microservices/items/pkg/protocol/grpc"
+	"github.com/laetadevelopment/shopping-cart-demo/microservices/items/pkg/protocol/rest"
+	"github.com/laetadevelopment/shopping-cart-demo/microservices/items/pkg/service/v1"
 )
 
 // Config for microservice

@@ -1,4 +1,4 @@
-module source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo
+module github.com/laetadevelopment/shopping-cart-demo/microservices/items
 
 go 1.12
 

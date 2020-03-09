@@ -8,9 +8,9 @@ import (
 
 	"google.golang.org/grpc"
 
-	"source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/api/v1"
-	"source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/logger"
-	"source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/protocol/grpc/middleware"
+	"github.com/laetadevelopment/shopping-cart-demo/microservices/carts/pkg/api/v1"
+	"github.com/laetadevelopment/shopping-cart-demo/microservices/carts/pkg/logger"
+	"github.com/laetadevelopment/shopping-cart-demo/microservices/carts/pkg/protocol/grpc/middleware"
 )
 
 func RunServer(ctx context.Context, v1API v1.CartServiceServer, port string) error {

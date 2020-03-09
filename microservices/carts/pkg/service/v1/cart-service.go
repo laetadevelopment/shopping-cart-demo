@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/api/v1"
+	"github.com/laetadevelopment/shopping-cart-demo/microservices/carts/pkg/api/v1"
 )
 
 const (

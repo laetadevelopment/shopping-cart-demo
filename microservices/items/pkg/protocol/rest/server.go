@@ -12,9 +12,9 @@ import (
     "go.uber.org/zap"
     "google.golang.org/grpc"
 
-    "source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/api/v1"
-    "source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/logger"
-    "source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo/pkg/protocol/rest/middleware"
+    "github.com/laetadevelopment/shopping-cart-demo/microservices/items/pkg/api/v1"
+    "github.com/laetadevelopment/shopping-cart-demo/microservices/items/pkg/logger"
+    "github.com/laetadevelopment/shopping-cart-demo/microservices/items/pkg/protocol/rest/middleware"
 )
 
 func RunServer(ctx context.Context, grpcPort, httpPort string) error {

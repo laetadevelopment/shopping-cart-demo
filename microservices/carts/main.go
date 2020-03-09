@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"source.cloud.google.com/laeta-shopping-cart-demo/ShoppingCartDemo"
+	"github.com/laetadevelopment/shopping-cart-demo/microservices/carts"
 )
 
 func main() {
