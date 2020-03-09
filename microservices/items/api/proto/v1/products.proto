@@ -1,0 +1,167 @@
+syntax = "proto3";
+package v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+    info: {
+        title: "Items Service";
+        version: "1.0";
+        contact: {
+            name: "";
+            url: "";
+            email: "";
+        };
+    };
+    schemes: HTTP;
+    consumes: "application/json";
+    produces: "application/json";
+    responses: {
+        key: "404";
+        value: {
+            description: "Returned when the resource does not exist.";
+            schema: {
+                json_schema: {
+                    type: STRING;
+                }
+            }
+        }
+    }
+};
+
+message Item {
+    string id = 1;
+    int64 shopifyId = 2;
+    string title = 3;
+    string description = 4;
+    message Image {
+        string id = 1;
+        int64 shopifyId = 2;
+        string src = 3;
+        string alt = 4;
+        string position = 5;
+        google.protobuf.Timestamp created = 6;
+        google.protobuf.Timestamp updated = 7;
+    }
+    repeated Image images = 5;
+    string vendor = 6;
+    string itemType = 7;
+    repeated Collection collections = 8;
+    string tags = 9;
+    message Variant {
+        string id = 1;
+        int64 shopifyId = 2;
+        string title = 3;
+        string sku = 4;
+        string position = 5;
+        string regularPrice = 6;
+        string salesPrice = 7;
+        string inventoryQuantity = 8;
+        string weight = 9;
+        google.protobuf.Timestamp created = 10;
+        google.protobuf.Timestamp updated = 11;
+    }
+    repeated Variant variants = 10;
+    google.protobuf.Timestamp created = 11;
+    google.protobuf.Timestamp updated = 12;
+}
+
+message Collection {
+    string id = 1;
+    string shopifyId = 2;
+    string title = 3;
+    string description = 4;
+    string image = 5;
+    google.protobuf.Timestamp created = 6;
+    google.protobuf.Timestamp updated = 7;
+}
+
+message CreateRequest{
+    string api = 1;
+    Item item = 2;
+}
+
+message CreateResponse{
+    string api = 1;
+    string id = 2;
+}
+
+message ReadRequest{
+    string api = 1;
+    string id = 2;
+}
+
+message ReadResponse{
+    string api = 1;
+    Item item = 2;
+}
+
+message UpdateRequest{
+    string api = 1;
+    Item item = 2;
+}
+
+message UpdateResponse{
+    string api = 1;
+    int64 updated = 2;
+}
+
+message DeleteRequest{
+    string api = 1;
+    string id = 2;
+}
+
+message DeleteResponse{
+    string api = 1;
+    int64 deleted = 2;
+}
+
+message ListRequest{
+    string api = 1;
+}
+
+message ListResponse{
+    string api = 1;
+    repeated Item data = 2;
+}
+
+service ItemService {
+    rpc List(ListRequest) returns (ListResponse){
+        option (google.api.http) = {
+            get: "/v1/items/all"
+        };
+    }
+
+    rpc Create(CreateRequest) returns (CreateResponse){
+        option (google.api.http) = {
+            post: "/v1/items"
+            body: "*"
+        };
+    }
+
+    rpc Read(ReadRequest) returns (ReadResponse){
+        option (google.api.http) = {
+            get: "/v1/items/{id}"
+        };
+    }
+
+    rpc Update(UpdateRequest) returns (UpdateResponse){
+        option (google.api.http) = {
+            put: "/v1/items/{item.id}"
+            body: "*"
+
+            additional_bindings {
+                patch: "/v1/items/{item.id}"
+                body: "*"
+            }
+        };
+    }
+
+    rpc Delete(DeleteRequest) returns (DeleteResponse){
+        option (google.api.http) = {
+            delete: "/v1/items/{id}"
+        };
+    }
+}
