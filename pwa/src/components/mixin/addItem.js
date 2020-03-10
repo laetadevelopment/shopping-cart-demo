@@ -13,6 +13,8 @@ export default (url, title) => {
     updated_at: new Date().getTime()
   })
 
+  console.log(store.state.id)
+
   if (store.state.id === '') {
     firebase.db.collection('items').orderBy('created_at').limitToLast(1).onSnapshot((snapShot) => { 
       snapShot.forEach((item)  => {
@@ -22,10 +24,8 @@ export default (url, title) => {
             created_at: new Date().getTime(),
             updated_at: new Date().getTime()
           }
-        ).then(
-          store.commit('setId', item.id),
-          router.push({ name: 'cart'})
         )
+        router.push({ name: 'cart'})
       });
     });
   }
