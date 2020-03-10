@@ -52,7 +52,7 @@ func Init(lvl int, timeFormat string) error {
 
 		// Configure console output.
 		var useCustomTimeFormat bool
-		ecfg := zap.NewItemionEncoderConfig()
+		ecfg := zap.NewProductionEncoderConfig()
 		if len(timeFormat) > 0 {
 			customTimeFormat = timeFormat
 			ecfg.EncodeTime = customTimeEncoder

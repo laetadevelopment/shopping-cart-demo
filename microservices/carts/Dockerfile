@@ -1,4 +1,4 @@
-FROM golang:1.12.5-stretch as builder
+FROM golang:1.14-stretch as builder
 WORKDIR $GOPATH/src/carts
 ENV GO111MODULE=on
 COPY go.mod .
