@@ -5,8 +5,8 @@ Mike Laeta
 https://laeta-shopping-cart-demo.firebaseapp.com  
 mike@laetadevelopment.com  
 
-# Install Steps
-## This app is composed of a Vue.js PWA, a carts microservice, and an items microservice that create REST endpoints which are converted to gRPC calls on a GoLang server.
+## Install Steps
+### This app is composed of a Vue.js PWA, a carts microservice, and an items microservice that create REST endpoints which are converted to gRPC calls on a GoLang server.
 
 To install simply clone the repo and run `docker-compose build` then `docker-compose up` from the root directory.
 
