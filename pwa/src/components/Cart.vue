@@ -1,7 +1,10 @@
 <template>
   <v-container grid-list-xs>
-    <v-subheader v-if="items">
-      <h2>Add items with the green button in the bottom right of your screen.</h2>
+    <v-subheader v-if="items.length > 1">
+      <h2>You have {{ items.length }} items in your cart. View summary by clicking the cart icon in the top right.</h2>
+    </v-subheader>
+    <v-subheader v-else-if="items.length === 1">
+      <h2>You have {{ items.length }} item in your cart. View summary by clicking the cart icon in the top right.</h2>
     </v-subheader>
     <v-subheader v-else>
       <h2>Your cart is empty. Add items with the green button in the bottom right.</h2>
