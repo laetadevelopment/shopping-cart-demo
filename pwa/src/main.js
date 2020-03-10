@@ -5,6 +5,7 @@ import './registerServiceWorker'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import vuetify from './plugins/vuetify';
 import VueNumberInput from '@chenfengyuan/vue-number-input';
+import store from './store'
 
 Vue.use(VueNumberInput)
 
@@ -13,5 +14,6 @@ Vue.config.productionTip = false
 new Vue({
   router,
   vuetify,
+  store,
   render: h => h(App)
 }).$mount('#app')
