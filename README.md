@@ -7,11 +7,13 @@ mike@laetadevelopment.com
 ## Install Steps
 ### This app is composed of a Vue.js PWA, a carts microservice, and an items microservice that create REST endpoints which are converted to gRPC calls on a GoLang server.
 
-To install simply clone the repo and run `docker-compose build` then `docker-compose up` from the root directory.
-
-NOTE: There are no dependencies set on the docker-compose file right now so you may need to adjust the MongoDB IP address.
+To install clone the repo and run `docker-compose build` then `docker-compose up` from the root directory.
 
 NOTE: The PWA still conneects to Firebase, but, that will soon be replaced with connections to the REST endpoints. Please expect wonky behavior on the current Firebase deployment as well.
+
+NOTE: You will need to connect to MongoDB through MongoDB Compass to create the databases for the Carts Service and the Items service until the DB schema is saved in the repo and initialized in the docker-compose file.
+
+NOTE: You will need to hardcode your Docker cluster IP address for the MongoDB connection in the docker-compose file until the IP is made static.
 
 # Carts Service
 ## Version: 1.0
