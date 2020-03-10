@@ -11,7 +11,7 @@
           </v-card-title>
           <v-container grid-list-sm>
             <v-layout row wrap>
-              <v-flex xs12 md6 xl3 pa-2>
+              <v-flex xs12>
                 <v-card style="text-align: center;">
                   <div id="spinner_container">
                     <v-progress-circular v-if="loading" v-bind:size="40" indeterminate color="primary" class="spinner"></v-progress-circular>
@@ -33,8 +33,11 @@
       </v-flex>
       <v-flex xs12>
         <v-card>
-          <v-card-title primary-title>
+          <v-card-title primary-title v-if="items.length > 0">
             <h3>Existing Items</h3>
+          </v-card-title>
+          <v-card-title primary-title v-else>
+            <h3>No Existing Items</h3>
           </v-card-title>
           <v-container grid-list-sm>
             <v-layout row wrap>
