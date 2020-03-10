@@ -1,1 +1,3 @@
-# shopping-cart-demo
+# Shoping Cart Demo
+
+Documentation coming soon!
