@@ -121,13 +121,6 @@ NOTE: The PWA still conneects to Firebase, but, that will soon be replaced with 
 ### Models
 
 
-#### CartItem
-
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| id | string |  | No |
-| qty | string |  | No |
-
 #### protobufAny
 
 `Any` contains an arbitrary serialized protocol buffer message along with a
@@ -229,7 +222,7 @@ field. Example (for message [google.protobuf.Duration][]):
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | string |  | No |
-| items | [ [CartItem](#cartitem) ] |  | No |
+| items | string |  | No |
 | created | dateTime |  | No |
 | updated | dateTime |  | No |
 

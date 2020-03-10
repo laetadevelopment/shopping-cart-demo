@@ -269,17 +269,6 @@
     }
   },
   "definitions": {
-    "CartItem": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "qty": {
-          "type": "string"
-        }
-      }
-    },
     "protobufAny": {
       "type": "object",
       "properties": {
@@ -323,10 +312,7 @@
           "type": "string"
         },
         "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CartItem"
-          }
+          "type": "string"
         },
         "created": {
           "type": "string",
