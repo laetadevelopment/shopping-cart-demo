@@ -115,10 +115,8 @@ mike@laetadevelopment.com
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| title | string |  | No |
+| id | string |  | No |
 | qty | string |  | No |
-| created | dateTime |  | No |
-| updated | dateTime |  | No |
 
 #### protobufAny
 

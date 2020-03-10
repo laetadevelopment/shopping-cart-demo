@@ -34,10 +34,8 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
 message Cart {
     string id = 1;
     message Item {
-        string title = 1;
+        string id = 1;
         string qty = 2;
-        google.protobuf.Timestamp created = 3;
-        google.protobuf.Timestamp updated = 4;
     }
     repeated Item items = 2;
     google.protobuf.Timestamp created = 3;

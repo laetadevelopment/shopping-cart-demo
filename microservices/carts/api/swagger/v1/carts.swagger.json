@@ -272,19 +272,11 @@
     "CartItem": {
       "type": "object",
       "properties": {
-        "title": {
+        "id": {
           "type": "string"
         },
         "qty": {
           "type": "string"
-        },
-        "created": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "updated": {
-          "type": "string",
-          "format": "date-time"
         }
       }
     },
