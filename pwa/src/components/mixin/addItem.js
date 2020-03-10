@@ -23,9 +23,7 @@ export default (url, title) => {
             updated_at: new Date().getTime()
           }
         ).then(
-          console.log(store.state.id),
           store.commit('setId', item.id),
-          console.log(store.state.id),
           router.push({ name: 'cart'})
         )
       });
