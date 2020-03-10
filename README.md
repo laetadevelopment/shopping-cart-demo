@@ -2,7 +2,6 @@
 
 **Contact information:**  
 Mike Laeta  
-https://laeta-shopping-cart-demo.firebaseapp.com  
 mike@laetadevelopment.com  
 
 ## Install Steps
@@ -126,10 +125,8 @@ NOTE: The PWA still conneects to Firebase, but, that will soon be replaced with 
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| title | string |  | No |
+| id | string |  | No |
 | qty | string |  | No |
-| created | dateTime |  | No |
-| updated | dateTime |  | No |
 
 #### protobufAny
 
