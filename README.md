@@ -1,14 +1,21 @@
 # Shoping Cart Demo
 
-Install steps coming soon!
-
-# Carts Service
-## Version: 1.0
-
 **Contact information:**  
 Mike Laeta  
 https://laeta-shopping-cart-demo.firebaseapp.com  
 mike@laetadevelopment.com  
+
+# Install Steps
+## This app is composed of a Vue.js PWA, a carts microservice, and an items microservice that create REST endpoints which are converted to gRPC calls on a GoLang server.
+
+To install simply clone the repo and run `docker-compose build` then `docker-compose up` from the root directory.
+
+NOTE: There are no dependencies set on the docker-compose file right now so you may need to adjust the MongoDB IP address.
+
+NOTE: The PWA still conneects to Firebase, but, that will soon be replaced with connections to the REST endpoints. Please expect wonky behavior on the current Firebase deployment as well.
+
+# Carts Service
+## Version: 1.0
 
 ### /v1/carts
 
@@ -280,11 +287,6 @@ field. Example (for message [google.protobuf.Duration][]):
 
 # Items Service
 ## Version: 1.0
-
-**Contact information:**  
-Mike Laeta  
-https://laeta-shopping-cart-demo.firebaseapp.com  
-mike@laetadevelopment.com  
 
 ### /v1/items
 
