@@ -8,16 +8,21 @@ export default (url, title) => {
   firebase.db.collection('items').add( {
     url,
     title,
-    created_at: new Date().getTime()
+    created_at: new Date().getTime(),
+    updated_at: new Date().getTime()
   })
 
-  firebase.db.collection('carts').add(
-    {
-      items: [title],
-      quantities: ['1'],
-      created_at: new Date().getTime()
-    }
-  ).then(
-    router.go(-1)
-  )
+  firebase.db.collection('items').orderBy('created_at').limitToLast(1).onSnapshot((snapShot) => { 
+    snapShot.forEach((item)  => {
+      firebase.db.collection('carts').add(
+        {
+          items: "id:" + item.id + ";qty:1",
+          created_at: new Date().getTime(),
+          updated_at: new Date().getTime()
+        }
+      ).then(
+        router.go(-1)
+      )
+    });
+  });
 }
