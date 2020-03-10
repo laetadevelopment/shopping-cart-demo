@@ -7,9 +7,24 @@
       <v-toolbar-title v-if="$route.name=='cart'">Your Cart</v-toolbar-title>
       <v-toolbar-title v-if="$route.name=='add'">Add Items</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>shopping_basket</v-icon>
-      </v-btn>
+      <div class="text-center">
+        <v-menu offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn icon v-on="on">
+              <v-icon>shopping_basket</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item
+              v-for="(item, index) in items"
+              :key="index"
+              @click=""
+            >
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
     </v-app-bar>
     <v-content>
       <router-view></router-view>
@@ -18,12 +33,30 @@
 </template>
 
 <script>
+  import firebase from './configFirebase.js'
   import Cart from './components/Cart'
 
   export default {
     name: 'App',
     components: {
       Cart
+    },
+    data() {
+      return {
+        items:[]
+      }
+    },
+    mounted() {
+      firebase.db.collection('items').orderBy('created_at').onSnapshot((snapShot) => {
+        this.items=[];
+        snapShot.forEach((item)  => {
+          this.items.push({
+            id: item.id,
+            url: item.data().url,
+            title: item.data().title
+          })
+        });
+      });
     }
   }
 </script>
