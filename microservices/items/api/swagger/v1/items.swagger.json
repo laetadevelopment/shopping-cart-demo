@@ -3,7 +3,11 @@
   "info": {
     "title": "Items Service",
     "version": "1.0",
-    "contact": {}
+    "contact": {
+      "name": "Mike Laeta",
+      "url": "https://laeta-shopping-cart-demo.firebaseapp.com",
+      "email": "mike@laetadevelopment.com"
+    }
   },
   "schemes": [
     "http"

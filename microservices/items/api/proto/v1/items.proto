@@ -10,9 +10,9 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
         title: "Items Service";
         version: "1.0";
         contact: {
-            name: "";
-            url: "";
-            email: "";
+            name: "Mike Laeta";
+            url: "https://laeta-shopping-cart-demo.firebaseapp.com";
+            email: "mike@laetadevelopment.com";
         };
     };
     schemes: HTTP;
