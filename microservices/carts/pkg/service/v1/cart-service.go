@@ -52,11 +52,7 @@ func (s *cartServiceServer) Create(ctx context.Context, req *v1.CreateRequest) (
 
 	p := v1.Cart{
 		Id:          uuid.NewV1().String(),
-		Title:       req.Cart.Title,
-		Description: req.Cart.Description,
-		Vendor:      req.Cart.Vendor,
-		CartType: req.Cart.CartType,
-		Tags:        req.Cart.Tags,
+		Items:		 req.Cart.Items,
 		Created:     ptypes.TimestampNow(),
 		Updated:     ptypes.TimestampNow(),
 	}
@@ -106,11 +102,7 @@ func (s *cartServiceServer) Update(ctx context.Context, req *v1.UpdateRequest) (
 	filter := bson.D{{"id", req.Cart.Id}}
 	update := bson.D{
 		{"$inc", bson.D{
-			{"title", req.Cart.Title},
-			{"description", req.Cart.Description},
-			{"vendor", req.Cart.Vendor},
-			{"cartType", req.Cart.CartType},
-			{"tags", req.Cart.Tags},
+			{"items", req.Cart.Items},
 			{"updated", ptypes.TimestampNow()},
 		}},
 	}
