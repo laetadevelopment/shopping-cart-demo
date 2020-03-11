@@ -14,7 +14,7 @@
         <v-card>
           <v-img height="200" :src="item.url" aspect-ratio="2.75"></v-img>
           <v-card-title primary-title><h3>{{ item.title }}</h3></v-card-title>
-          <number-input :value="item.qty" :min="1" :max="100" center controls></number-input>
+          <number-input v-model="qty" @change="update(qty, item.id)" :value="item.qty" :min="1" :max="100" center controls></number-input>
         </v-card>
       </v-flex>
     </v-layout>
@@ -32,7 +32,9 @@
   export default {
     data () {
       return {
-        items: []
+        items: [],
+        itemQty: '',
+        qty: 0
       }
     },
     mounted() {
@@ -49,7 +51,6 @@
                   var item = response.data.item
                   item.qty = Number(itemQty)
                   this.items.push(item)
-                  console.log(item)
                 } else {
                   console.log("Error getting item.")
                 }
@@ -61,6 +62,11 @@
         })
       }
     },
+    methods:{
+      update(qty, id) {
+        updateQty(id, qty)
+      }
+    }
   }
 </script>
 
