@@ -25,26 +25,25 @@
 </template>
 
 <script>
-  import firebase from '../configFirebase.js'
+  import axios from 'axios'
 
   export default {
-    data() {
+    data () {
       return {
-        items:[]
+        items: []
       }
     },
     mounted() {
-      firebase.db.collection('items').orderBy('created_at').onSnapshot((snapShot) => {
-        this.items=[];
-        snapShot.forEach((item)  => {
-          this.items.push({
-            id: item.id,
-            url: item.data().url,
-            title: item.data().title
-          })
-        });
-      });
-    }
+      axios.get('http://localhost:8081/v1/items/all').then(response => {
+        if (response.data) {
+          response.data.data.forEach(function (item) {
+            console.log(item)
+          });
+        } else {
+          console.log("Error getting cart items.")
+        }
+      })
+    },
   }
 </script>
 

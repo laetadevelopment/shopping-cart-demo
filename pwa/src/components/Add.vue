@@ -59,7 +59,6 @@
 <script>
   import axios from 'axios'
   import addItem from './mixin/addItem.js'
-  import firebase from '../configFirebase.js'
 
   export default {
     data(){
@@ -76,19 +75,9 @@
           this.itemUrl = response.data.message;
           this.loading=false;
         } else {
-          console.log("Error getting image")
+          console.log("Error getting image.")
         }
       })
-      firebase.db.collection('items').orderBy('created_at').onSnapshot((snapShot) => {
-        this.items=[];
-        snapShot.forEach((item)  => {
-          this.items.push({
-            id: item.id,
-            url: item.data().url,
-            title: item.data().title
-          })
-        });
-      });
     },
     methods:{
       add() {

@@ -33,7 +33,6 @@
 </template>
 
 <script>
-  import firebase from './configFirebase.js'
   import Cart from './components/Cart'
 
   export default {
@@ -47,16 +46,7 @@
       }
     },
     mounted() {
-      firebase.db.collection('items').orderBy('created_at').onSnapshot((snapShot) => {
-        this.items=[];
-        snapShot.forEach((item)  => {
-          this.items.push({
-            id: item.id,
-            url: item.data().url,
-            title: item.data().title
-          })
-        });
-      });
+      
     }
   }
 </script>
