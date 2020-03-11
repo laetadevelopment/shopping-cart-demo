@@ -63,19 +63,27 @@
   export default {
     data(){
       return {
-        itemUrl: null,
+        itemUrl: '',
         title: '',
         loading: true,
-        items:[]
+        items: []
       }
     },
     mounted(){
       axios.get('https://dog.ceo/api/breed/appenzeller/images/random').then(response => {
         if (response.data.status) {
-          this.itemUrl = response.data.message;
-          this.loading=false;
+          this.itemUrl = response.data.message
+          this.loading=false
         } else {
           console.log("Error getting image.")
+        }
+      })
+
+      axios.get('http://localhost:8081/v1/items/all').then(response => {
+        if (response.data.data) {
+          this.items = response.data.data
+        } else {
+          console.log("Error getting cart items.")
         }
       })
     },

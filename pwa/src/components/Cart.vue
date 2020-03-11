@@ -25,24 +25,34 @@
 </template>
 
 <script>
+  import store from '../store'
   import axios from 'axios'
 
   export default {
     data () {
       return {
+        cartItems: '',
         items: []
       }
     },
     mounted() {
-      axios.get('http://localhost:8081/v1/items/all').then(response => {
-        if (response.data) {
-          response.data.data.forEach(function (item) {
-            console.log(item)
-          });
-        } else {
-          console.log("Error getting cart items.")
-        }
-      })
+      if (store.state.id !== '') {
+        var cartUrl = "http://localhost:8080/v1/carts/" + store.state.id
+        axios.get(cartUrl).then(response => {
+          if (response.data) {
+            this.cartItems = response.data.cart.items
+          } else {
+            console.log("Error getting cart items.")
+          }
+        })
+        axios.get('http://localhost:8081/v1/items/all').then(response => {
+          if (response.data.data) {
+            this.items = response.data.data
+          } else {
+            console.log("Error getting cart items.")
+          }
+        })
+      }
     },
   }
 </script>

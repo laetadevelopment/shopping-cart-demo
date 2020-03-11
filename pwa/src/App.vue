@@ -34,6 +34,7 @@
 
 <script>
   import Cart from './components/Cart'
+  import axios from 'axios'
 
   export default {
     name: 'App',
@@ -42,11 +43,17 @@
     },
     data() {
       return {
-        items:[]
+        items: []
       }
     },
     mounted() {
-      
+      axios.get('http://localhost:8081/v1/items/all').then(response => {
+        if (response.data.data) {
+          this.items = response.data.data
+        } else {
+          console.log("Error getting cart items.")
+        }
+      })
     }
   }
 </script>

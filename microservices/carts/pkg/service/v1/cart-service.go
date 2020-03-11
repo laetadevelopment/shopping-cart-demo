@@ -50,8 +50,10 @@ func (s *cartServiceServer) Create(ctx context.Context, req *v1.CreateRequest) (
 
 	c := s.db.Database("carts").Collection("cart")
 
+	cartId := uuid.NewV1().String()
+
 	p := v1.Cart{
-		Id:          uuid.NewV1().String(),
+		Id:          cartId,
 		Items:		 req.Cart.Items,
 		Created:     ptypes.TimestampNow(),
 		Updated:     ptypes.TimestampNow(),
@@ -64,6 +66,7 @@ func (s *cartServiceServer) Create(ctx context.Context, req *v1.CreateRequest) (
 
 	return &v1.CreateResponse{
 		Api: apiVersion,
+		Id: cartId,
 	}, nil
 }
 

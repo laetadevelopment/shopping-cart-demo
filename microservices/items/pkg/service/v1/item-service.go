@@ -50,8 +50,10 @@ func (s *itemServiceServer) Create(ctx context.Context, req *v1.CreateRequest) (
 
 	c := s.db.Database("items").Collection("item")
 
+	itemId := uuid.NewV1().String()
+
 	p := v1.Item{
-		Id:          uuid.NewV1().String(),
+		Id:          itemId,
 		Url:         req.Item.Url,
 		Title:       req.Item.Title,
 		Created:     ptypes.TimestampNow(),
@@ -65,6 +67,7 @@ func (s *itemServiceServer) Create(ctx context.Context, req *v1.CreateRequest) (
 
 	return &v1.CreateResponse{
 		Api: apiVersion,
+		Id: itemId,
 	}, nil
 }
 
