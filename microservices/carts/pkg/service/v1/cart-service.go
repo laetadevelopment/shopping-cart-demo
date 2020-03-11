@@ -102,7 +102,7 @@ func (s *cartServiceServer) Update(ctx context.Context, req *v1.UpdateRequest) (
 
 	c := s.db.Database("carts").Collection("cart")
 
-	filter := bson.D{{"id", req.Id}}
+	filter := bson.D{{"id", req.Cart.Id}}
 	update := bson.D{
 		{"$inc", bson.D{
 			{"items", req.Cart.Items},

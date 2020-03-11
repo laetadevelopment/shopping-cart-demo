@@ -103,7 +103,7 @@ func (s *itemServiceServer) Update(ctx context.Context, req *v1.UpdateRequest) (
 
 	c := s.db.Database("items").Collection("item")
 
-	filter := bson.D{{"id", req.Id}}
+	filter := bson.D{{"id", req.Item.Id}}
 	update := bson.D{
 		{"$inc", bson.D{
 			{"url", req.Item.Url},
