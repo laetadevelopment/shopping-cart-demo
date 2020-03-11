@@ -104,7 +104,7 @@ func (s *cartServiceServer) Update(ctx context.Context, req *v1.UpdateRequest) (
 
 	filter := bson.D{{"id", req.Cart.Id}}
 	update := bson.D{
-		{"$inc", bson.D{
+		{"$set", bson.D{
 			{"items", req.Cart.Items},
 			{"updated", ptypes.TimestampNow()},
 		}},

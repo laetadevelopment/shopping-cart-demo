@@ -105,7 +105,7 @@ func (s *itemServiceServer) Update(ctx context.Context, req *v1.UpdateRequest) (
 
 	filter := bson.D{{"id", req.Item.Id}}
 	update := bson.D{
-		{"$inc", bson.D{
+		{"$set", bson.D{
 			{"url", req.Item.Url},
 			{"title", req.Item.Title},
 			{"updated", ptypes.TimestampNow()},
