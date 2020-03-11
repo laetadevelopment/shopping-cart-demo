@@ -40,10 +40,31 @@ export default (url, title) => {
     axios.post('http://localhost:8081/v1/items', item).then((response) => {
       if (response.data) {
         console.log("Successfully created item.")
+        var itemId = response.data.id
+        var cartUrl = "http://localhost:8080/v1/carts/" + store.state.id
+        axios.get(cartUrl).then(response => {
+          if (response.data) {
+            var cart = {
+              "api": "v1",
+              "cart": {
+                "items": response.data.cart.items + ",id:" + itemId + ";qty:1"
+              }
+            }
+            axios.put(cartUrl, cart).then((response) => {
+              if (response.data) {
+                console.log("Successfully updated cart.")
+                router.push({ name: 'cart'})
+              } else {
+                console.log("Error creating cart.")
+              }
+            })
+          } else {
+            console.log("Error getting cart items.")
+          }
+        })
       } else {
         console.log("Error creating item.")
       }
     })
-    router.push({ name: 'cart'})
   }
 }

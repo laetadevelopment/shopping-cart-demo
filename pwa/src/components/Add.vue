@@ -66,6 +66,7 @@
         itemUrl: '',
         title: '',
         loading: true,
+        cartItems: '',
         items: []
       }
     },
