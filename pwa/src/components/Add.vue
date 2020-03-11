@@ -21,7 +21,7 @@
                     <v-layout row wrap>
                       <v-flex xs12>
                         <v-text-field v-model="title" name="title" label="Describe me!" id="title"/>
-                        <v-btn block color="primary" @click="add()">ADD TO CART</v-btn>
+                        <v-btn block color="primary" @click="create()">ADD TO CART</v-btn>
                       </v-flex>
                     </v-layout>
                   </v-container>
@@ -45,7 +45,7 @@
                 <v-card>
                   <v-img height="200" :src="item.url" aspect-ratio="2.75"></v-img>
                   <v-card-title primary-title><h3>{{ item.title }}</h3></v-card-title>
-                  <v-btn block color="primary" @click="">ADD TO CART</v-btn>
+                  <v-btn block color="primary" @click="add(item.id, item.url, item.title)">ADD TO CART</v-btn>
                 </v-card>
               </v-flex>
             </v-layout>
@@ -58,6 +58,7 @@
 
 <script>
   import axios from 'axios'
+  import createItem from './mixin/createItem.js'
   import addItem from './mixin/addItem.js'
 
   export default {
@@ -74,7 +75,7 @@
       axios.get('https://dog.ceo/api/breed/appenzeller/images/random').then(response => {
         if (response.data.status) {
           this.itemUrl = response.data.message
-          this.loading=false
+          this.loading = false
         } else {
           console.log("Error getting image.")
         }
@@ -89,8 +90,11 @@
       })
     },
     methods:{
-      add() {
-        addItem(this.itemUrl, this.title)
+      create() {
+        createItem(this.itemUrl, this.title)
+      },
+      add(itemUrl, title) {
+        addItem(itemUrl, title)
       }
     }
   }

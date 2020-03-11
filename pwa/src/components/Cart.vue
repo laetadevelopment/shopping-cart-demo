@@ -14,7 +14,7 @@
         <v-card>
           <v-img height="200" :src="item.url" aspect-ratio="2.75"></v-img>
           <v-card-title primary-title><h3>{{ item.title }}</h3></v-card-title>
-          <number-input :value="1" :min="1" :max="10" center controls></number-input>
+          <number-input :value="1" :min="1" :max="100" center controls></number-input>
         </v-card>
       </v-flex>
     </v-layout>
@@ -31,7 +31,6 @@
   export default {
     data () {
       return {
-        cartItems: '',
         items: []
       }
     },
@@ -40,14 +39,17 @@
         var cartUrl = "http://localhost:8080/v1/carts/" + store.state.id
         axios.get(cartUrl).then(response => {
           if (response.data) {
-            this.cartItems = response.data.cart.items
-          } else {
-            console.log("Error getting cart items.")
-          }
-        })
-        axios.get('http://localhost:8081/v1/items/all').then(response => {
-          if (response.data.data) {
-            this.items = response.data.data
+            response.data.cart.items.split(',').forEach((item) => {
+              var itemId = item.substring(item.lastIndexOf("id:"), item.lastIndexOf(";")).split(':')[1]
+              var itemUrl = "http://localhost:8081/v1/items/" + itemId
+              axios.get(itemUrl).then(response => {
+                if (response.data) {
+                  this.items.push(response.data.item)
+                } else {
+                  console.log("Error getting item.")
+                }
+              })
+            })
           } else {
             console.log("Error getting cart items.")
           }

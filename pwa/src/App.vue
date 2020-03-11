@@ -15,11 +15,7 @@
             </v-btn>
           </template>
           <v-list>
-            <v-list-item
-              v-for="(item, index) in items"
-              :key="index"
-              @click=""
-            >
+            <v-list-item v-for="(item, index) in items" :key="index">
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -34,6 +30,7 @@
 
 <script>
   import Cart from './components/Cart'
+  import store from './store'
   import axios from 'axios'
 
   export default {
@@ -47,13 +44,26 @@
       }
     },
     mounted() {
-      axios.get('http://localhost:8081/v1/items/all').then(response => {
-        if (response.data.data) {
-          this.items = response.data.data
-        } else {
-          console.log("Error getting cart items.")
-        }
-      })
+      if (store.state.id !== '') {
+        var cartUrl = "http://localhost:8080/v1/carts/" + store.state.id
+        axios.get(cartUrl).then(response => {
+          if (response.data) {
+            response.data.cart.items.split(',').forEach((item) => {
+              var itemId = item.substring(item.lastIndexOf("id:"), item.lastIndexOf(";")).split(':')[1]
+              var itemUrl = "http://localhost:8081/v1/items/" + itemId
+              axios.get(itemUrl).then(response => {
+                if (response.data) {
+                  this.items.push(response.data.item)
+                } else {
+                  console.log("Error getting item.")
+                }
+              })
+            })
+          } else {
+            console.log("Error getting cart items.")
+          }
+        })
+      }
     }
   }
 </script>
