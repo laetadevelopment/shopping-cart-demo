@@ -19,6 +19,16 @@ NOTE: You will need to hardcode your Docker cluster IP address for the MongoDB c
   - After running `docker-compose up` for the first time you will see your local cluster IP address in the logging
   - From the root folder edit the `docker-compose.yml` file IP address wherever you see `mongodb://`
 
+TODO: Fix sorting of items in cart so that items are listed in descending order by the data/time they were added.
+
+TODO: Make the cart summary and cart item quantity update on the fly.
+
+TODO: Add validation when adding an item to your cart.
+
+TODO: Add unit testing to both the Vue.js PWA and the GoLang microservices.
+
+TODO: Clean up code formatting in GitHub repo.
+
 # Carts Service
 ## Version: 1.0
 

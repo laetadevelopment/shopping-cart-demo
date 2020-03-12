@@ -14,7 +14,7 @@
         <v-card>
           <v-img height="200" :src="item.url" aspect-ratio="2.75"></v-img>
           <v-card-title primary-title><h3>{{ item.title }}</h3></v-card-title>
-          <number-input v-model="index" @change="update($event, item.id)" :value="item.qty" :min="1" :max="100" center controls></number-input>
+          <number-input :value="item.qty" :min="1" :max="100" center controls></number-input>
         </v-card>
       </v-flex>
     </v-layout>
@@ -32,8 +32,7 @@
   export default {
     data () {
       return {
-        items: [],
-        itemQty: ''
+        items: []
       }
     },
     mounted() {
@@ -62,8 +61,9 @@
       }
     },
     methods:{
-      update(qty, id) {
-        updateQty(qty, id)
+      update(qty, id, itemQty) {
+        console.log(qty)
+        updateQty(qty, id, itemQty)
       }
     }
   }
