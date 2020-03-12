@@ -35,7 +35,7 @@ export default (id, url, title) => {
             console.log("Successfully updated cart.")
             router.push({ name: 'cart'})
           } else {
-            console.log("Error creating cart.")
+            console.log("Error updating cart.")
           }
         })
       } else {
