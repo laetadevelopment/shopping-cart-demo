@@ -16,7 +16,7 @@
           </template>
           <v-list>
             <v-list-item v-for="(item, index) in items" :key="index">
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-title>Item: {{ item.title }} Qty: {{ item.qty }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -51,9 +51,12 @@
             response.data.cart.items.split(',').forEach((item) => {
               var itemId = item.substring(item.lastIndexOf("id:"), item.lastIndexOf(";")).split(':')[1]
               var itemUrl = "http://localhost:8081/v1/items/" + itemId
+              var itemQty = item.split("qty:")[1]
               axios.get(itemUrl).then(response => {
                 if (response.data) {
-                  this.items.push(response.data.item)
+                  var item = response.data.item
+                  item.qty = Number(itemQty)
+                  this.items.push(item)
                 } else {
                   console.log("Error getting item.")
                 }

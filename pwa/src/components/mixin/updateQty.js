@@ -17,7 +17,6 @@ export default (qty, id) => {
         } else {
           updatedItems.push(item)
         }
-        console.log(updatedItems)
         var cart = {
           "api": "v1",
           "cart": {
