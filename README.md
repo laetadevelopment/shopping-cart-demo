@@ -27,7 +27,7 @@ TODO: Add validation when adding an item to your cart.
 
 TODO: Add unit testing to both the Vue.js PWA and the GoLang microservices.
 
-TODO: Clean up code formatting in GitHub repo.
+TODO: Clean up code formatting and finish commenting code.
 
 # Carts Service
 ## Version: 1.0
