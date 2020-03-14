@@ -269,6 +269,35 @@
     }
   },
   "definitions": {
+    "CartItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "shopifyId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "src": {
+          "type": "string"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "position": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
@@ -311,8 +340,11 @@
         "id": {
           "type": "string"
         },
-        "items": {
-          "type": "string"
+        "tests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CartItem"
+          }
         },
         "created": {
           "type": "string",
@@ -321,6 +353,9 @@
         "updated": {
           "type": "string",
           "format": "date-time"
+        },
+        "items": {
+          "type": "string"
         }
       }
     },

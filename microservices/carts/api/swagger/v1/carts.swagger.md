@@ -111,6 +111,18 @@ mike@laetadevelopment.com
 ### Models
 
 
+#### CartItem
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | string |  | No |
+| shopifyId | string (int64) |  | No |
+| src | string |  | No |
+| alt | string |  | No |
+| position | string |  | No |
+| created | dateTime |  | No |
+| updated | dateTime |  | No |
+
 #### protobufAny
 
 `Any` contains an arbitrary serialized protocol buffer message along with a
@@ -212,9 +224,10 @@ field. Example (for message [google.protobuf.Duration][]):
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | string |  | No |
-| items | string |  | No |
+| tests | [ [CartItem](#cartitem) ] |  | No |
 | created | dateTime |  | No |
 | updated | dateTime |  | No |
+| items | string |  | No |
 
 #### v1CreateRequest
 
