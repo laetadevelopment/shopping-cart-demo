@@ -21,7 +21,7 @@ NOTE: You will need to hardcode your Docker cluster IP address for the MongoDB c
 
 TODO: Fix sorting of items in cart so that items are listed in descending order by the data/time they were added.
 
-TODO: Make the cart summary ~and cart item quantity~ update on the fly. Quantity updating fixed in 28ac7e5.
+TODO: Make the cart summary ~and cart item quantity~ update on the fly. Quantity updating fixed in https://github.com/laetadevelopment/shopping-cart-demo/commit/28ac7e50b5d47899da63391b5b8755f9173cbeb8.
 
 TODO: Add validation when adding an item to your cart.
 
