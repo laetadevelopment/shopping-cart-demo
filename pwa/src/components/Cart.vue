@@ -14,7 +14,7 @@
         <v-card>
           <v-img height="200" :src="item.url" aspect-ratio="2.75"></v-img>
           <v-card-title primary-title><h3>{{ item.title }}</h3></v-card-title>
-          <number-input @change="update(item.qty, $event, item.id)" :value="item.qty" :min="1" :max="100" center controls></number-input>
+          <number-input @change="update(item.qty, $event, item.id)" :value="item.qty" :min="0" :max="100" center controls></number-input>
         </v-card>
       </v-flex>
     </v-layout>

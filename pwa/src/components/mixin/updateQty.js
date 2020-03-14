@@ -7,21 +7,19 @@ export default (originalQty, newQty, id) => {
   axios.get(cartUrl).then(response => {
     if (response.data) {
       var items = response.data.cart.items
-      console.log(items)
-      console.log(originalQty)
-      console.log(newQty)
       var updatedItems = []
       items.split(',').forEach((item) => {
         var itemId = item.substring(item.lastIndexOf("item:"), item.lastIndexOf(";")).split(':')[1]
         if (itemId === id) {
-          var itemQty = item.split("qty:")[1]
-          var updatedItem = item.replace("qty:" + itemQty, "qty:" + newQty)
-          updatedItems.push(updatedItem)
+          if (newQty > 0) {
+            var itemQty = item.split("qty:")[1]
+            var updatedItem = item.replace("qty:" + itemQty, "qty:" + newQty)
+            updatedItems.push(updatedItem)
+          }
         } else {
           updatedItems.push(item)
         }
       })
-      console.log(updatedItems.join(','))
       var cart = {
         "api": "v1",
         "cart": {
@@ -35,6 +33,9 @@ export default (originalQty, newQty, id) => {
           console.log("Error updating item quantity.")
         }
       })
+      if (newQty === 0) {
+        router.go()
+      }
     } else {
       console.log("Error getting cart items.")
     }
