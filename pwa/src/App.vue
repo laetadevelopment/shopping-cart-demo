@@ -15,8 +15,8 @@
             </v-btn>
           </template>
           <v-list>
-            <v-list-item v-for="(item, index) in items" :key="index">
-              <v-list-item-title><strong>Item:</strong> {{ item.title }} <strong>Qty:</strong> {{ item.qty }}</v-list-item-title>
+            <v-list-item v-for="(item, index) in items" :key="item.id">
+              <v-list-item-title>{{ index + 1 }}<strong>Item:</strong> {{ item.title }} <strong>Qty:</strong> {{ item.qty }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
